@@ -1,0 +1,68 @@
+/* For notification icon blinking ///////////////////////////////////////////// */
+.blink {
+  animation: blink 2s linear infinite;
+}
+
+@keyframes blink {
+  0% {
+    opacity: 0;
+  }
+  25% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+  75% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* For sidebar //////////////////////////////////////////////////////////////// */
+.mySidebar > a {
+  color: #343a40;
+  border: 1px solid lightgray;
+  border-top: none;
+  margin: 0;
+}
+
+.mySidebar > a:last-child {
+  border-bottom-left-radius: 7px;
+  border-bottom-right-radius: 7px;
+}
+
+.mySidebar > a:first-child {
+  border-top: 1px solid lightgray;
+  border-top-left-radius: 7px;
+  border-top-right-radius: 7px;
+}
+
+.mySidebar > a:hover {
+  background-color: lightgray;
+}
+
+/* Active tab */
+.mySidebar > a.active,
+.mySidebar > a.active:hover,
+.mySidebar > a.active:focus {
+  background-color: #343a40;
+  color: white;
+  border-color: #343a40;
+}
+
+/* Table style /////////////////////////////////////////// */
+.myTable > thead > tr > th,
+.myTable > tbody > tr > td {
+  padding-left: 15px;
+}
+.myTable > thead > tr > th {
+  border: none;
+}
+
+/* Center Text /////////////////////////////////////////// */
+.center-text {
+  text-align: center;
+}
