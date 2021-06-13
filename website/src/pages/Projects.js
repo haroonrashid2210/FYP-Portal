@@ -127,7 +127,7 @@ class Projects extends React.Component {
                     <th>Project</th>
                     <th>Group leader</th>
                     <th>Supervisor</th>
-                    <th>Action</th>
+                    <th className="center-text">Action</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -136,8 +136,14 @@ class Projects extends React.Component {
                       <td>{item.project}</td>
                       <td>{item.leader}</td>
                       <td>{item.supervisor}</td>
-                      <td>
-                        <a href="">Join</a>
+                      <td className="center-text">
+                        <Badge
+                          as={Button}
+                          variant={"light"}
+                          style={{ border: "none" }}
+                        >
+                          Join
+                        </Badge>
                       </td>
                     </tr>
                   ))}

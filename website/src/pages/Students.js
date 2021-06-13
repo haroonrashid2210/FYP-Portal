@@ -1,4 +1,5 @@
 import React from "react";
+import axios from "axios";
 import {
   Card,
   Container,
@@ -7,50 +8,38 @@ import {
   Table,
   Badge,
   Button,
-  Dropdown,
-  Form,
   FormControl,
   InputGroup,
 } from "react-bootstrap";
-import { Link } from "react-router-dom";
 import { BadgeColor } from "./Home";
 
 class Students extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      DATA: [
-        {
-          name: "Wahb ur Rehman",
-          available: "YES",
-        },
-        {
-          name: "Android App Maker",
-          available: "NO",
-        },
-        {
-          name: "Ahmed Ali",
-          available: "YES",
-        },
-      ],
+      DATA: [],
       SEARCH_DATA: [],
     };
     this.search = this.search.bind(this);
+    this.fetchStudents = this.fetchStudents.bind(this);
   }
 
   componentDidMount() {
-    this.setState({ SEARCH_DATA: this.state.DATA });
+    this.fetchStudents();
+  }
+
+  fetchStudents() {
+    var self = this;
+    axios.get("http://localhost:5000/api/students/getall").then((res) => {
+      self.setState({ DATA: res.data, SEARCH_DATA: res.data });
+    });
   }
 
   search(text) {
     let temp = [];
     text = text.toLowerCase();
     this.state.DATA.forEach((element) => {
-      if (
-        element.name.toLowerCase().includes(text) ||
-        element.available.toLowerCase().includes(text)
-      )
-        temp.push(element);
+      if (element.name.toLowerCase().includes(text)) temp.push(element);
     });
     this.setState({ SEARCH_DATA: temp });
   }
@@ -87,6 +76,7 @@ class Students extends React.Component {
                 <thead>
                   <tr>
                     <th>Name</th>
+                    <th>Registration</th>
                     <th className="center-text">Available</th>
                     <th className="center-text">Action</th>
                   </tr>
@@ -95,13 +85,14 @@ class Students extends React.Component {
                   {this.state.SEARCH_DATA.map((item) => (
                     <tr>
                       <td>{item.name}</td>
+                      <td>{item.regNo}</td>
                       <td className="center-text">
                         <Badge variant={BadgeColor[item.available]}>
-                          {item.available}
+                          {item.available ? "YES" : "NO"}
                         </Badge>
                       </td>
                       <td className="center-text">
-                        {item.available == "YES" ? (
+                        {item.available ? (
                           <Badge
                             as={Button}
                             variant={"light"}

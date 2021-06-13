@@ -69,19 +69,6 @@ class Profile extends React.Component {
                         />
                       </Col>
                     </Form.Row>
-
-                    <Form.Row style={{ marginBottom: 5 }}>
-                      <Form.Label column lg={2}>
-                        Contact No.
-                      </Form.Label>
-                      <Col>
-                        <Form.Control
-                          type="text"
-                          placeholder="0900 78601"
-                          size="sm"
-                        />
-                      </Col>
-                    </Form.Row>
                   </Form.Group>
                 </Form>
               </Card.Body>

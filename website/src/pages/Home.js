@@ -20,6 +20,8 @@ const BadgeColor = {
   Inactive: "secondary",
   YES: "success",
   NO: "secondary",
+  true: "success",
+  false: "secondary",
 };
 
 class Home extends React.Component {
@@ -78,9 +80,9 @@ class Home extends React.Component {
                     <th>#</th>
                     <th>Title</th>
                     <th>Due</th>
-                    <th>Status</th>
-                    <th>Result</th>
-                    <th></th>
+                    <th className="txt-align-c">Status</th>
+                    <th className="txt-align-c">Result</th>
+                    <th className="txt-align-c">Action</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -89,17 +91,17 @@ class Home extends React.Component {
                       <td>{item.id}</td>
                       <td>{item.title}</td>
                       <td>{item.due.toLocaleDateString()}</td>
-                      <td>
+                      <td className="txt-align-c">
                         <Badge variant={BadgeColor[item.status]}>
                           {item.status}
                         </Badge>
                       </td>
-                      <td>
+                      <td className="txt-align-c">
                         <Badge variant={BadgeColor[item.result]}>
                           {item.result}
                         </Badge>
                       </td>
-                      <td>
+                      <td className="txt-align-c">
                         {item.status === "Inactive" ? (
                           <></>
                         ) : (
