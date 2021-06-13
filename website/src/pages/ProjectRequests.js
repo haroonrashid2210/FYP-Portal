@@ -25,15 +25,21 @@ class GroupRequests extends React.Component {
                   <tr>
                     <th>Student Name</th>
                     <th>Registration no.</th>
-                    <th>Actions</th>
+                    <th className="txt-align-c">Actions</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
                     <td>Osama</td>
                     <td>FA17-BCS-000</td>
-                    <td>
-                      <a href="">delete</a>
+                    <td className="txt-align-c">
+                      <Badge
+                        as={Button}
+                        variant={"light"}
+                        style={{ border: "none" }}
+                      >
+                        delete
+                      </Badge>
                     </td>
                   </tr>
                 </tbody>
@@ -51,15 +57,28 @@ class GroupRequests extends React.Component {
                     <th>Project Name</th>
                     <th>Project Leader</th>
                     <th>Supervisor</th>
-                    <th>Actions</th>
+                    <th className="txt-align-c">Actions</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
                     <td>FYP Scope Document</td>
                     <td>13 May 2020</td> <td>N/A</td>
-                    <td>
-                      <a href="">accept</a> <a href="">reject</a>
+                    <td className="txt-align-c">
+                      <Badge
+                        as={Button}
+                        variant={"light"}
+                        style={{ border: "none" }}
+                      >
+                        accept
+                      </Badge>{" "}
+                      <Badge
+                        as={Button}
+                        variant={"light"}
+                        style={{ border: "none" }}
+                      >
+                        reject
+                      </Badge>
                     </td>
                   </tr>
                 </tbody>

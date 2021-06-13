@@ -1,4 +1,5 @@
 import React from "react";
+import axios from "axios";
 import {
   Card,
   Container,
@@ -19,27 +20,22 @@ class Supervisors extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      DATA: [
-        {
-          name: "Wahb ur Rehman",
-          available: "YES",
-        },
-        {
-          name: "Android App Maker",
-          available: "NO",
-        },
-        {
-          name: "Ahmed Ali",
-          available: "YES",
-        },
-      ],
+      DATA: [],
       SEARCH_DATA: [],
     };
     this.search = this.search.bind(this);
+    this.fetchSupervisors = this.fetchSupervisors.bind(this);
   }
 
   componentDidMount() {
-    this.setState({ SEARCH_DATA: this.state.DATA });
+    this.fetchSupervisors();
+  }
+
+  fetchSupervisors() {
+    var self = this;
+    axios.get("http://localhost:5000/api/supervisors/getall").then((res) => {
+      self.setState({ DATA: res.data, SEARCH_DATA: res.data });
+    });
   }
 
   search(text) {
@@ -97,11 +93,11 @@ class Supervisors extends React.Component {
                       <td>{item.name}</td>
                       <td className="center-text">
                         <Badge variant={BadgeColor[item.available]}>
-                          {item.available}
+                          {item.available ? "YES" : "NO"}
                         </Badge>
                       </td>
                       <td className="center-text">
-                        {item.available == "YES" ? (
+                        {item.available ? (
                           <Badge
                             as={Button}
                             variant={"light"}
